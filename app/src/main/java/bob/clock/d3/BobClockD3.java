@@ -60,7 +60,7 @@ public class BobClockD3 extends AppWidgetProvider {
         remoteViews.setImageViewBitmap(R.id.clock_view, builtClock);
         boolean launchClock = preferences.getBoolean("launchclock", false);
         if (launchClock) {
-            Intent alarmClockIntent= new Intent(AlarmClock.ACTION_SHOW_ALARMS);
+            Intent alarmClockIntent= new Intent(AlarmClock.ACTION_SET_ALARM);
             PendingIntent pendingIntent =  PendingIntent.getActivity(context, 0, alarmClockIntent, 0);
             remoteViews.setOnClickPendingIntent(R.id.clock_view, pendingIntent);
         }
