@@ -1,4 +1,4 @@
-package bob.clock;
+package bob.clock.d3;
 
 import java.io.FileInputStream;
 import java.text.DateFormatSymbols;
@@ -21,6 +21,8 @@ import android.provider.AlarmClock;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import bob.clock.d3.R;
 
 public class BobClockD3 extends AppWidgetProvider {
 

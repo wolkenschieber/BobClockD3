@@ -35,7 +35,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import bob.clock.R;
+import bob.clock.d3.R;
 
 public class ColorPickerDialog 
 	extends 

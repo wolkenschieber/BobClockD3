@@ -3,5 +3,5 @@
     android:minWidth="146dp"
     android:minHeight="200dp"
     android:initialLayout="@layout/bob_clock_d3"
-    android:configure="bob.clock.BobClockD3Configure">
+    android:configure="bob.clock.d3.BobClockD3Configure">
 </appwidget-provider>

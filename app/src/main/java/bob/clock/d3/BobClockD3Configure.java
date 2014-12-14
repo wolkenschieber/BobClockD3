@@ -1,8 +1,7 @@
-package bob.clock;
+package bob.clock.d3;
 
 import java.io.FileOutputStream;
 
-import android.app.ProgressDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -19,12 +18,14 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.View;
 
+import bob.clock.d3.R;
+
 /**
  * @author bob
  */
 public class BobClockD3Configure extends PreferenceActivity {
 
-    static final String PREFS_KEY = "bob.clock.BobClockD3";
+    static final String PREFS_KEY = "bob.clock.d3.BobClockD3";
     static final String HOURS_FILE = "hours.png";
     static final String MINUTES_FILE = "minutes.png";
     static final String HOURS_COLOUR_KEY = "hours";

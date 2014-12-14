@@ -2,7 +2,7 @@
  * Copyright (c) Rapid Mobile Media Ltd 2004 - 2010
  * (see http://www.rapid-mobile.com/eula.txt)
  */
-package bob.clock;
+package bob.clock.d3;
 
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
