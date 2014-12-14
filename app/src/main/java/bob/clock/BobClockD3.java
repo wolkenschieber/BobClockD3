@@ -1,6 +1,7 @@
 package bob.clock;
 
 import java.io.FileInputStream;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -113,30 +114,28 @@ public class BobClockD3 extends AppWidgetProvider {
 	}
 	
 	private static Bitmap buildClock(final SharedPreferences preferences, final Context context) {
-		final SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEEE~|~MMMMM~|~dd~|~a");
 		final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
 		final float density = displayMetrics.density;
 		
 		final boolean mode24 = preferences.getBoolean("mode24", false);
 		final boolean lowercase = preferences.getBoolean("lowercase", false);
-		
-		final Calendar calendar = Calendar.getInstance();
-		final Date date = calendar.getTime();
-		final String formattedDateString = dateFormatter.format(date);
-		StringTokenizer stringTokeniser = new StringTokenizer(formattedDateString, "~|~");
-		String dayString = stringTokeniser.nextToken();
-		String monthString = stringTokeniser.nextToken();
-		String dayOfMonthString = stringTokeniser.nextToken();
-		String ampmString = stringTokeniser.nextToken();
+
+        final DateFormatSymbols dfs = DateFormatSymbols.getInstance();
+        final Calendar calendar = Calendar.getInstance();
+
+		String dayString = dfs.getWeekdays()[calendar.get(Calendar.DAY_OF_WEEK)];
+		String monthString = dfs.getMonths()[calendar.get(Calendar.MONTH)];
+		String dayOfMonthString = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+		String ampmString = dfs.getAmPmStrings()[calendar.get(Calendar.AM_PM)];
 		
 		final String dateLayout = preferences.getString("datelayout", DATE_FORMAT_DEFAULT);
 		String dateString = null;
 		if (dateLayout.equals(DATE_FORMAT_DEFAULT)) {
-			dateString = monthString + ". " + dayOfMonthString;
+			dateString = monthString + " " + dayOfMonthString;
 		} else {
 			dateString = dayOfMonthString + ". " +monthString;
 		}
-		
+
 		if (lowercase) {
 			ampmString = ampmString.toLowerCase();
 			dayString = dayString.toLowerCase();

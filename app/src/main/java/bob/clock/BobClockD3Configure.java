@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -37,8 +38,8 @@ public class BobClockD3Configure extends PreferenceActivity {
 		addPreferencesFromResource(R.xml.settings);
 		setContentView(R.layout.bob_clock_d3_configure);
 		
-		((Button) findViewById(R.id.configure_confirm_button)).setOnClickListener(confirmClickListener);
-		((Button) findViewById(R.id.configure_cancel_button)).setOnClickListener(cancelClickListener);
+		(findViewById(R.id.configure_confirm_button)).setOnClickListener(confirmClickListener);
+		(findViewById(R.id.configure_cancel_button)).setOnClickListener(cancelClickListener);
         
         Bundle extras = getIntent().getExtras();
         widgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
@@ -82,8 +83,8 @@ public class BobClockD3Configure extends PreferenceActivity {
         @Override
         protected Void doInBackground(Void ...voids) {
         	final SharedPreferences preferences = BobClockD3Configure.this.getSharedPreferences(PREFS_KEY, 0);
-    		final int colourHours = preferences.getInt(HOURS_COLOUR_KEY, 0xbbbdbdbd);
-    		final int colourMinutes = preferences.getInt(MINUTES_COLOUR_KEY, 0xeecf6f40);
+    		final int colourHours = preferences.getInt(HOURS_COLOUR_KEY, Color.BLACK);
+    		final int colourMinutes = preferences.getInt(MINUTES_COLOUR_KEY, Color.WHITE);
     		
         	createStrip(HOURS_FILE, colourHours);
     		createStrip(MINUTES_FILE, colourMinutes);

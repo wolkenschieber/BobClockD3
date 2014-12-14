@@ -3,17 +3,17 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="Customise Look">
-        <com.att.preference.colorpicker.ColorPickerPreference
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="hours"
             android:title="@string/hours_title"
             android:summary="@string/hours_summary"
-            android:defaultValue="#bbbdbdbd"     
+            android:defaultValue="@integer/COLOR_BLACK"
             alphaSlider="true" />
-        <com.att.preference.colorpicker.ColorPickerPreference
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="minutes"
             android:title="@string/minutes_title"
             android:summary="@string/minutes_summary"
-            android:defaultValue="#eecf6f40"     
+            android:defaultValue="@integer/COLOR_GREEN"
             alphaSlider="true" />
 	    <CheckBoxPreference
                 android:key="lowercase"

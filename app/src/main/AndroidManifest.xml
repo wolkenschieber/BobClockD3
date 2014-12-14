@@ -21,7 +21,4 @@
         
         <service android:name=".BobClockD3Service" />
     </application>
-    
-    <uses-sdk android:minSdkVersion="4" />
-
-</manifest> 
+</manifest>
