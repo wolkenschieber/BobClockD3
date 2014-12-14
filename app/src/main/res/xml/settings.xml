@@ -48,6 +48,6 @@
         <CheckBoxPreference
                 android:key="launchclock"
                 android:title="Launch Clock"
-                android:summary="Attempt to launch clock when pressed, only finds common clock apps!" />
+                android:summary="Launch alarm clock on widget press" />
     </PreferenceCategory>
 </PreferenceScreen>

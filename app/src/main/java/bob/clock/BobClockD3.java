@@ -19,6 +19,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Rect;
+import android.provider.AlarmClock;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -59,52 +60,13 @@ public class BobClockD3 extends AppWidgetProvider {
         remoteViews.setImageViewBitmap(R.id.clock_view, builtClock);
         boolean launchClock = preferences.getBoolean("launchclock", false);
         if (launchClock) {
-            PendingIntent pendingIntent = createPendingIntent(context);
-            if (pendingIntent != null) {
-                remoteViews.setOnClickPendingIntent(R.id.clock_view, pendingIntent);
-            }
+            Intent alarmClockIntent= new Intent(AlarmClock.ACTION_SET_ALARM);
+            PendingIntent pendingIntent =  PendingIntent.getActivity(context, 0, alarmClockIntent, 0);
+            remoteViews.setOnClickPendingIntent(R.id.clock_view, pendingIntent);
         }
 
         ComponentName widget = new ComponentName(context, BobClockD3.class);
         appWidgetManager.updateAppWidget(widget, remoteViews);
-    }
-
-    /*
-     * Code from http://stackoverflow.com/questions/3590955/intent-to-launch-the-clock-application-on-android
-     * by frusso
-     */
-    static private PendingIntent createPendingIntent(final Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        Intent alarmClockIntent = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER);
-
-        String clockImpls[][] = {
-                {"HTC Alarm Clock", "com.htc.android.worldclock", "com.htc.android.worldclock.WorldClockTabControl"},
-                {"Standard Alarm Clock", "com.android.deskclock", "com.android.deskclock.AlarmClock"},
-                {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
-                {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock", "com.motorola.blur.alarmclock.AlarmClock"},
-                {"Samsung Galaxy Alarm Clock", "com.sec.android.app.clockpackage", "com.sec.android.app.clockpackage.ClockPackage"}
-        };
-
-        boolean foundClockImpl = false;
-
-        for (String[] clockImpl : clockImpls) {
-            String packageName = clockImpl[1];
-            String className = clockImpl[2];
-            try {
-                ComponentName cn = new ComponentName(packageName, className);
-                packageManager.getActivityInfo(cn, PackageManager.GET_META_DATA);
-                alarmClockIntent.setComponent(cn);
-                foundClockImpl = true;
-            } catch (NameNotFoundException e) {
-                //no-op
-            }
-        }
-
-        if (foundClockImpl)
-            return PendingIntent.getActivity(context, 0, alarmClockIntent, 0);
-
-
-        return null;
     }
 
     private static Bitmap buildClock(final SharedPreferences preferences, final Context context) {
