@@ -47,7 +47,7 @@
     <PreferenceCategory android:title="Launch Mode">
         <CheckBoxPreference
                 android:key="launchclock"
-                android:title="Launch Clock"
-                android:summary="Launch alarm clock on widget press" />
+                android:title="Show alarms"
+                android:summary="Show alarms on widget press" />
     </PreferenceCategory>
 </PreferenceScreen>
