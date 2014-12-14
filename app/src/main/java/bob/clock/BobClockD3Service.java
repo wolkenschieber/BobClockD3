@@ -42,6 +42,4 @@ public class BobClockD3Service extends Service {
     public void onDestroy() {
         unregisterReceiver(broadcastReceiver);
     }
-
-
 }

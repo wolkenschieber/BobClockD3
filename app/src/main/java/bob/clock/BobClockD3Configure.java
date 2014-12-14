@@ -64,7 +64,6 @@ public class BobClockD3Configure extends PreferenceActivity {
         @Override
         public void onClick(View v) {
             generateImageStrips();
-
         }
     };
 
